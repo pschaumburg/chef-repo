@@ -1,0 +1,21 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos-8
+
+suites:
+  - name: default
+    run_list:
+      - recipe[workstation::default]
+    verifier:
+      inspec_tests:
+        - test/recipes
+    attributes:
